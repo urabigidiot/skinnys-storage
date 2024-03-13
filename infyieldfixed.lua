@@ -2031,20 +2031,6 @@ end
 AllWaypoints = {}
 
 local cooldown = false
-function writeCooldown(name,data)
-	task.spawn(function()
-		if not cooldown then
-			cooldown = true
-			writefile(name, data)
-		else
-			repeat wait() until cooldown == false
-			writeCooldown(name,data)
-		end
-		wait(3)
-		cooldown = false
-	end)
-end
-
 function dragGUI(gui)
 	task.spawn(function()
 		local dragging
@@ -2828,17 +2814,17 @@ function saves()
 				if not success then
 					warn("Save Json Error:", response)
 					warn("Overwriting Save File")
-					writeCooldown("IY_FE.iy", defaults)
+					writefile("IY_FE.iy", defaults)
 					wait()
 					saves()
 				end
 			else
-				writeCooldown("IY_FE.iy", defaults)
+				writefile("IY_FE.iy", defaults)
 				wait()
 				saves()
 			end
 		else
-			writeCooldown("IY_FE.iy", defaults)
+			writefile("IY_FE.iy", defaults)
 			wait()
 			if pcall(function() readfile("IY_FE.iy") end) then
 				saves()
@@ -2971,7 +2957,7 @@ function updatesaves()
 			currentScroll = {currentScroll.R,currentScroll.G,currentScroll.B};
 			eventBinds = eventEditor.SaveData()
 		}
-		writeCooldown("IY_FE.iy", HttpService:JSONEncode(update))
+		writefile("IY_FE.iy", HttpService:JSONEncode(update))
 	end
 end
 
@@ -3819,7 +3805,7 @@ SaveChatlogs.MouseButton1Down:Connect(function()
 					fileext = fileext+1
 					nameFile()
 				else
-					writeCooldown(placeName..' Chat Logs ('..fileext..').txt', writelogsFile)
+					writefile(placeName..' Chat Logs ('..fileext..').txt', writelogsFile)
 				end
 			end
 			nameFile()
