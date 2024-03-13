@@ -1936,9 +1936,7 @@ PlaceId, JobId = game.PlaceId, game.JobId
 local IsOnMobile = table.find({Enum.Platform.IOS, Enum.Platform.Android}, UserInputService:GetPlatform())
 
 function writefileExploit()
-	if writefile then
-		return true
-	end
+	return true
 end
 
 function isNumber(str)
