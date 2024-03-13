@@ -48,7 +48,7 @@ local removeall = Instance.new("TextButton")
 local lagserver = Instance.new("TextButton")
 --Properties:
 PrisonBreakerv15.Name = "PrisonBreaker v1.5"
-PrisonBreakerv15.Parent = game.Players.LocalPlayer.PlayerGui
+PrisonBreakerv15.Parent = game.CoreGui
 
 openmain.Name = "openmain"
 openmain.Parent = PrisonBreakerv15
